@@ -1,4 +1,5 @@
 public class Solution {
+    // Time Complexity O(n)
     public static String StringCompression(String str) {
         StringBuffer sb = new StringBuffer();
         int count = 1;
@@ -16,7 +17,8 @@ public class Solution {
         return sb.toString();
     }
 
-    public static String StringDecompression(String str){
+    public static String StringDecompression(String str) {
+        // Time Complexity O(nx) where x is the max number in the String
         StringBuffer sb = new StringBuffer();
         for (int i = 0; i < str.length(); i += 2) {
             char c = str.charAt(i);
