@@ -15,7 +15,7 @@ public class LL {
             return;
          }
          nthNodeFromLast(head.next, N);
-         if (i + 1 == N) {
+         if (++i == N) {
             System.out.println(head.data);
          }
       }
