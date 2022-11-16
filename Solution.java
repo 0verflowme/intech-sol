@@ -23,11 +23,6 @@ class StackWithMin {
        }
 
        int t = s.peek();
-
-       if (t < min)
-           System.out.println(min);
-       else
-           System.out.println(t);
    }
    void pop()
    {
@@ -37,12 +32,9 @@ class StackWithMin {
        }
        Integer t = s.pop();
        if (t < min) {
-           System.out.println(min);
            min = 2 * min - t;
        }
 
-       else
-           System.out.println(t);
    }
    void push(Integer x)
    {
