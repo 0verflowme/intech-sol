@@ -1,68 +1,5 @@
-import java.util.Stack;
-class StackWithMin {
-   Stack<Integer> s;
-   int min;
-
-   StackWithMin() {
-      s = new Stack<Integer>();
-   }
-   
-   void getMin()
-   {
-       if (s.isEmpty())
-           System.out.println(-1);
-       else
-           System.out.println(min);
-   }
-
-   void peek()
-   {
-       if (s.isEmpty()) {
-           System.out.println(-1);
-           return;
-       }
-
-       int t = s.peek();
-   }
-   void pop()
-   {
-       if (s.isEmpty()) {
-           System.out.println(-1);
-           return;
-       }
-       Integer t = s.pop();
-       if (t < min) {
-           min = 2 * min - t;
-       }
-
-   }
-   void push(Integer x)
-   {
-       if (s.isEmpty()) {
-           min = x;
-           s.push(x);
-           return;
-       }
-       if (x < min) {
-           s.push(2 * x - min);
-           min = x;
-       }
-
-       else
-           s.push(x);
-   }
-};
 
 public class Solution {
-   class LinkedListNode {
-      int data;
-      LinkedListNode next;
-   
-      public LinkedListNode(int data){
-         this.data = data;
-         this.next = null;
-      }
-   }
    
    // Time Complexity O(n)
    public static String StringCompression(String str) {
@@ -95,20 +32,31 @@ public class Solution {
        return sb.toString();
    }
 
-   // Time Complexity is O(N) where N is length of LL
-   public static void nthNodeFromLast(LinkedListNode head, int N) {
-      int i = 0;
-      if (head == null) {
-         return;
-      }
-      nthNodeFromLast(head.next, N);
-      if (i+1 == N) {
-         System.out.println(head.data);
-      }
-   }
+
+   public static int watertrapped(int[] arr){
+        int n = arr.length;
+        int left[] = new int[n];
+        int right[] = new int[n];
+  
+        int water = 0;
+  
+        left[0] = arr[0];
+        for (int i = 1; i < n; i++)
+            left[i] = Math.max(left[i - 1], arr[i]);
+        right[n - 1] = arr[n - 1];
+        for (int i = n - 2; i >= 0; i--)
+            right[i] = Math.max(right[i + 1], arr[i]);
+  
+        for (int i = 0; i < n; i++)
+            water += Math.min(left[i], right[i]) - arr[i];
+  
+        return water;
+    }
 
    public static void main(String[] args) {
-       System.out.println(StringCompression("aaaabcccc"));
-       System.out.println(StringDecompression("a2b1c5a3"));
+      //  System.out.println(StringCompression("aaaabcccc"));
+      //  System.out.println(StringDecompression("a2b1c5a3"));
+      int[] arr = { 2, 1, 3,0, 1,2,3};
+      System.out.println(watertrapped(arr));
    }
 }
