@@ -66,11 +66,25 @@ public class Solution {
       return dp[sum];
    }
 
+   public static int maxNum(int n){
+      int ans = 0;
+      int i = 1;
+      while (n / i > 0) {
+          int temp = (n / (i * 10))
+                         * i
+                     + (n % i);
+          i *= 10;
+          ans = Math.max(ans, temp);
+      }
+      n = ans;
+      return n;
+   }
+
    public static void main(String[] args) {
       //  System.out.println(StringCompression("aaaabcccc"));
       //  System.out.println(StringDecompression("a2b1c5a3"));
       int[] arr = { 2, 1, 3, 0, 1, 2, 3 };
       int[] arr2 = {1,2,5,8,10};
-      System.out.println(coinChange(arr,7));
+      System.out.println(maxNum(2945));
    }
 }
